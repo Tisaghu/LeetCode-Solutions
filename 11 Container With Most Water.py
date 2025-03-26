@@ -4,22 +4,21 @@ class Solution(object):
         :type height: List[int]
         :rtype: int
         """
+        l, r  = 0, len(height)-1
+        maxArea = 0
 
-        #Brute force solution that runs out of time
-        #TODO: Come back to this and find effeciency
-        l = 0
-        res = 0
+        while l != r:
+            area = (r-l) * min(height[l], height[r])
+            maxArea = max(maxArea, area)
 
-        while l < len(height):
-            r = l+1
-            while r < len(height):   
-                segWidth = r - l
-                area = min(height[l], height[r]) * segWidth
-                if area > res:
-                    res = area
-                r+=1
-            l += 1
-        return res
+            if height[l] <= height[r]:
+                l += 1
+            else:
+                r -= 1
+        
+        return maxArea
+
+        
         
 
 
