@@ -15,7 +15,7 @@ class Solution(object):
             first = heapq.heappop(stones)
             second = heapq.heappop(stones)
             if second > first: #Greater because using negative numbers to simulate max heap
-                heapq.heappush(stones, second - first)
+                heapq.heappush(stones, first - second)
 
         stones.append(0)
         return abs(stones[0])
@@ -25,5 +25,5 @@ class Solution(object):
     
 
 test = Solution()
-stones = [2,7,4,2,8,1]
+stones = [3,7,2]
 print(test.lastStoneWeight(stones)) #1
