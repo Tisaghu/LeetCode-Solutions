@@ -5,29 +5,22 @@ class Solution(object):
         :rtype: int
         """
         stack = []
-        operators = ['+','-','*','/']
 
         for token in tokens:
-            if token not in operators:
-                stack.append(token)
+            if token == "+":
+                stack.append(stack.pop() + stack.pop())
+            elif token == "-":
+                first, second = stack.pop(), stack.pop()
+                stack.append(second - first)
+            elif token == "*":
+                stack.append(stack.pop() * stack.pop())
+            elif token == "/":
+                first, second = stack.pop(), stack.pop()
+                stack.append(int(float(second) / first))
             else:
-                first = int(stack.pop())
-                second = int(stack.pop())
-
-                if token == '+':
-                    stack.append(second + first)
-                elif token == '-':
-                    stack.append(second - first)
-                elif token == '*':
-                    stack.append(second * first)
-                else:
-                    #Handle division correctly
-                    if second * first > 0:
-                        stack.append(second // first)
-                    else:
-                        stack.append(-(-second // first))
+                stack.append(int(token))
         
-        return int(stack[0])
+        return stack[0]
 
 
 test = Solution()
