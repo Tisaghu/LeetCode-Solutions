@@ -7,29 +7,26 @@ class Solution(object):
         stack = []
         operators = ['+','-','*','/']
 
-        
         for token in tokens:
-            #push non operators on to the stack
             if token not in operators:
                 stack.append(token)
             else:
-                #pop the previous 2 elements off the stack
-                pop1, pop2 = int(stack[-1]), int(stack[-2])
-                stack.pop()
-                stack.pop()
-                
-                #perform operations:
-                if token == '+':
-                    newVal = pop1 + pop2
-                elif token == '-':
-                    newVal = pop1 - pop2
-                elif token == '*':
-                    newVal = pop1 * pop2
-                elif token == '/':
-                    newVal = pop2 // pop1 if pop2 * pop1 > 0 else -(-pop2 // pop1)
+                first = int(stack.pop())
+                second = int(stack.pop())
 
-                #push the new value back on to the stack
-                stack.append(newVal)
+                if token == '+':
+                    stack.append(second + first)
+                elif token == '-':
+                    stack.append(second - first)
+                elif token == '*':
+                    stack.append(second * first)
+                else:
+                    #Handle division correctly
+                    if second * first > 0:
+                        stack.append(second // first)
+                    else:
+                        stack.append(-(-second // first))
+        
         return int(stack[0])
 
 
