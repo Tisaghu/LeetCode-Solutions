@@ -4,41 +4,34 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
+        res = []
+
         #sort the array
         nums.sort()
-        result = []
+        
+        for i, a in enumerate(nums):
+            if i > 0 and a == nums[i-1]:
+                continue
 
-        #it's like the 2sum problem with x being the target number
-        for i in range(0,len(nums)-1):
-            fixed = nums[i]
-            target = -fixed
-
-            #Since the array is sorted, can use a two pointer approach to efficiently find j and k
-            j, k = i + 1, len(nums)-1
-            while j < k:
-                currentSum = nums[j] + nums[k]
-                if currentSum == target:
-                    result.append([nums[i], nums[j], nums[k]])
-                    j += 1
-                    k -= 1
-                if currentSum > target:
-                    k -= 1
+            l, r = i + 1, len(nums) - 1
+            while l < r:
+                threeSum = a + nums[l] + nums[r]
+                if threeSum > 0: 
+                    r -= 1
+                elif threeSum < 0:
+                    l += 1
                 else:
-                    j += 1
-
-        return result
-
-
-
-
-
-
-
-
-
+                    res.append([a, nums[l], nums[r]])
+                    l += 1
+                    while nums[l] == nums[l -1] and l < r:
+                        l += 1
+        return res
 
 test = Solution()
+print(test.threeSum([-1,0,1,2,-1,-4]))
 print(test.threeSum([0,0,0,0]))
 print(test.threeSum([-1,0,1,2,-1,-4])) #[[-1,-1,2],[-1,0,1]]
+
+
 
 
