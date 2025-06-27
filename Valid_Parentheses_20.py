@@ -27,7 +27,3 @@ class Solution(object):
                 stack.pop()
         return not stack
 
-test = Solution()
-print(test.isValid("()")) #True
-print(test.isValid("()[]{}")) #True
-print(test.isValid("(]")) #False
