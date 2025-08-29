@@ -1,5 +1,5 @@
 import pytest
-from Koko_Eating_Bananas_875 import Solution
+from src.Koko_Eating_Bananas_875 import Solution
 
 test_cases = [
     ([3,6,7,11], 8, 4),

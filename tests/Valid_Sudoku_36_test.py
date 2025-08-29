@@ -1,5 +1,5 @@
 import pytest
-from Valid_Sudoku_36 import Solution
+from src.Valid_Sudoku_36 import Solution
 
 test_cases = [
     ([["5","3",".",".","7",".",".",".","."]

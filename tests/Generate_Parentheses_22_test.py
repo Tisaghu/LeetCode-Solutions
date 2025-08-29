@@ -1,5 +1,5 @@
 import pytest
-from Generate_Parentheses_22 import Solution
+from src.Generate_Parentheses_22 import Solution
 
 test_cases = [
     (3, ["((()))", "(()())", "(())()", "()(())", "()()()"]),

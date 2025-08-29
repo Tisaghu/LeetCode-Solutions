@@ -1,5 +1,5 @@
 import pytest
-from Search_a_2D_Matrix_74 import Solution
+from src.Valid_Parentheses_20 import Solution
 
 test_cases = [
     ("()", True),
